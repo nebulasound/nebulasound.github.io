@@ -1,0 +1,96 @@
+@media (max-width: 1200px) {
+
+    .no-extension__alert {
+        padding: 20px;
+        font-weight: 600;
+        font-size: 16px;
+    }
+    .data-input {
+        min-width: 100%;
+    }
+    .data-btn {
+        margin-bottom: 50px;
+    }
+    .data-result {
+        width: 100%;
+    }
+    .welcome__divider {
+        display: none;
+    }
+    .delete-block__title {
+        margin-bottom: 30px;
+    }
+    #deleteNameResult {
+        width: 100%;
+    }
+    .delete-block__title {
+        width: 100%;
+    }
+    .total-names__counter {
+        text-align: center;
+        display: block;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    .date {
+        position: relative;
+        right: 0px;
+        bottom: 0px;
+    }
+}
+
+@media (max-width: 767px) {
+    .md-card {
+        width: 100% !important;
+    }
+    .footer-menu a {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .data-input {
+        margin-right: 0px;
+        padding: 16px 16px;
+    }
+    .logo {
+        padding: 30px 0px;
+    }
+    .welcome__title {
+        line-height: 30px;
+        font-size: 18px;
+        font-weight: 300;
+        margin-top: 30px;
+        color: #323232;
+    }
+    .nebulas-logo {
+        padding: 20px 0px;
+    }
+    .form-block {
+        padding: 30px 30px;
+    }
+    .socials-block__item {
+        margin: 20px 0px;
+    }
+    .delete-block {
+        text-align: center;
+    }
+    .footer__logo {
+        margin-top: 0px;
+    }
+    .footer__created {}
+    .footer__created {
+        margin-top: 30px;
+        padding: 30px 30px 30px 50px;
+    }
+    .total-names__counter {
+        text-align: center;
+        display: block;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+    .date {
+        position: relative;
+        right: 0px;
+        bottom: 0px;
+    }
+}
