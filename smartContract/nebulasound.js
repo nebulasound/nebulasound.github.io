@@ -88,6 +88,3 @@ nebulaSound.prototype = {
 }
 
 module.exports = nebulaSound
-
-n1h656qsWvxa7E9B3MQuWVjaL5MuAqXgi7A
-e8ae8b85e3857c99732bc247befb3bf65fc205bc726d490079cc364eed182608
