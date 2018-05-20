@@ -1,3 +1,4 @@
+AOS.init();
 var dappAddress = "n1h656qsWvxa7E9B3MQuWVjaL5MuAqXgi7A";
 
 var NebPay = require("nebpay");
@@ -28,7 +29,7 @@ var args = ""
 var rateItem = ''
 
 function clickRateSong(id) {
-    rateItem = '#'+id
+    rateItem = '#' + id
     args = id
     rateSong();
 }
@@ -131,7 +132,8 @@ var app = new Vue({
     },
 
     data: {
-        songs: []
+        songs: [],
+        isLoading: true
     },
 
     methods: {

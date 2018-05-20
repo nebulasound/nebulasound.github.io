@@ -188,7 +188,6 @@ body {
 }
 .footer{
     padding: 50px 0px;
-    margin-top: 30px;
     background-color: #121212;
 }
 .footer__logo{
@@ -309,4 +308,113 @@ iframe{
 }
 .--fail{
     background-color: #ff5252 !important;
+}
+.roadmap{
+    background-color: #fff;
+    color: #121212;
+    padding: 60px 0px;
+}
+
+ul.roadmap-lists {
+    background: url(../img/roadmap-line.jpg) repeat-y center 0;
+    margin: 0;
+    padding: 0;
+}
+ul.roadmap-lists li {
+    color: #b2b2b2;
+    font-size: 22px;
+    font-weight: 200;
+    list-style: none;
+    margin-left: 50%;
+}
+ul.roadmap-lists li.item-l {
+    text-align: right;
+    width: 50%;
+    margin-left: 0;
+}
+ul.roadmap-lists li p {
+    padding: .3rem 0 .3rem 1.6rem;
+    position: relative;
+    margin: 0;
+}
+ul.roadmap-lists li.item-l p {
+    padding: .3rem 1.6rem .3rem 0;
+}
+
+
+ul.roadmap-lists li.item-future {
+    color: #333;
+}
+ul.roadmap-lists li.item-future p::before {
+    border-color: #131313;
+}
+
+ul.roadmap-lists li p::before {
+    content: " ";
+    width: .6rem;
+    height: .6rem;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+    border: 2px solid #b2b2b2;
+    position: absolute;
+    left: -.25rem;
+    top: .7rem;
+    background-color: #fff;
+}
+
+ul.roadmap-lists li.item-l p:after {
+    content: " ";
+    width: .6rem;
+    height: .6rem;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+    border: 2px solid #b2b2b2;
+    position: absolute;
+    right: -.35rem;
+    top: .7rem;
+    background-color: #fff;
+}
+ul.roadmap-lists li.item-l p:before {
+display: none;
+}
+ul.roadmap-lists li.item-future p:after {
+    border-color: #131313;
+}
+
+ul.roadmap-lists li.item-hightlight p:before {
+    background-color: #ff5252;
+    border-color: #ff5252;
+}
+ul.roadmap-lists li.item-hightlight {
+    color: #ff5252;
+    font-weight: 400;
+}
+.roadmap-title{
+    font-size: 42px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #232323;
+    height: 100vh;
+
+}
+.active{
+    height: 100vh;
+    overflow-y: hidden;
 }

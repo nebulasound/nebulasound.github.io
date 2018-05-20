@@ -13,14 +13,16 @@
     <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
     <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default-dark.css">
     <link href="https://fonts.googleapis.com/css?family=Rajdhani:400,600,700" rel="stylesheet">
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script src="libs/jquery-3.3.1.min.js"></script>
     <script src="libs/nebPay.js"></script>
     <script src=libs/vue.js></script>
     <script src=libs/vue-material.js></script>
-    <link rel="stylesheet" href="css/style.min.css">
-    <!--     <link rel="stylesheet" href="css/main.css">
+    <!-- <link rel="stylesheet" href="css/style.min.css"> -->
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/adaptive.css">
-    <script src="js/script.min.js"></script> -->
+    <script src="js/script.min.js"></script>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
     (function(d, w, c) {
@@ -55,140 +57,192 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="./" class="logo">Nebula<span class="--color-accent">Sound</span></a>
-                </div>
-                <div class="col-md-6">
-                    <div class="no-extension">
-                        <div id="noExtension">
-                            <div class="no-extension__alert">Please install <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a> to use nebulasound</div>
+    <div id="app" v-bind:class="{ active: isLoading }">
+    	<div class="preloader" v-if="isLoading">
+                <md-progress-spinner class="md-accent" md-mode="indeterminate"></md-progress-spinner>
+            </div>
+        <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="./" class="logo">Nebula<span class="--color-accent">Sound</span></a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="no-extension">
+                            <div id="noExtension">
+                                <div class="no-extension__alert">Please install <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a> to use nebulasound</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
-    <section class="welcome">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="nebulas-logo"><img src="img/nebulas-logo.png" alt=""></div>
-                </div>
-                <div class="col-md-2">
-                    <div class="welcome__divider"></div>
-                </div>
-                <div class="col-md-6">
-                    <div class="welcome__title">Share, listen and rate music using <span>Nebulas</span></div>
+        </header>
+        <section class="welcome">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="nebulas-logo"><img src="img/nebulas-logo.png" alt=""></div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="welcome__divider"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="welcome__title">Share, listen and rate music using <span>Nebulas</span></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <div class="block-divider"></div>
-    <section id="app">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <md-content class='description'>
-                        <div class="md-title form-title">What is it?</div>
-                        <div class="description-text">
-                            <p>NebulaSound — is a Nebulas based decentralized <b>social network</b> with only one and important feature: <b>music sharing</b>. You can share your favourite songs with the whole nebulas community just via <b>youtube link</b>.</p>
-                            <p>Today, using <b>NebulaSound</b>, you can share, listen and rate music which is uploaded on <b>youtube</b>. In future we are gonna to add API of such <b>music services</b> as soundcloud, last.fm and spotify. </p>
-                            <br>
-                            <p><b>How to use?</b>
-                                <ul>
-                                    <li>- Enter an <b>artist</b>, <b>title</b> and <b>youtube link</b> of a song that you wanna share with.</li>
-                                    <li>- You can share as <b>many</b> songs as you want.</li>
-                                    <li>- If you decide to like the song, remember that you <b>can't</b> take your "like" back.</li>
-                                </ul>
-                            </p>
-                        </div>
-                    </md-content>
-                </div>
-                <div class="col-md-4">
-                    <form class="md-layout">
-                        <md-card class="md-layout-item">
-                            <md-card-header>
-                                <div class="md-title form-title">Share your song</div>
-                            </md-card-header>
-                            <md-card-content>
-                                <div class="md-layout md-gutter">
+        </section>
+        <div class="block-divider"></div>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <md-content data-aos="fade-right" data-aos-once='true' class='description'>
+                            <div class="md-title form-title">What is it?</div>
+                            <div class="description-text">
+                                <p>NebulaSound — is a Nebulas based decentralized <b>social network</b> with only one and important feature: <b>music sharing</b>. You can share your favourite songs with the whole nebulas community just via <b>youtube link</b>.</p>
+                                <p>Today, using <b>NebulaSound</b>, you can share, listen and rate music which is uploaded on <b>youtube</b>. In future we are gonna to add API of such <b>music services</b> as soundcloud, last.fm and spotify. </p>
+                                <br>
+                                <p><b>How to use?</b>
+                                    <ul>
+                                        <li>- Enter an <b>artist</b>, <b>title</b> and <b>youtube link</b> of a song that you wanna share with.</li>
+                                        <li>- You can share as <b>many</b> songs as you want.</li>
+                                        <li>- If you decide to like the song, remember that you <b>can't</b> take your "like" back.</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </md-content>
+                    </div>
+                    <div class="col-md-4">
+                        <form data-aos="fade-left" data-aos-once='true' class="md-layout">
+                            <md-card class="md-layout-item">
+                                <md-card-header>
+                                    <div class="md-title form-title">Share your song</div>
+                                </md-card-header>
+                                <md-card-content>
+                                    <div class="md-layout md-gutter">
+                                        <div class="md-layout-item">
+                                            <md-field>
+                                                <label for="artist">Artist</label>
+                                                <md-input class='artist' placeholder="Radiohead" name="artist" />
+                                            </md-field>
+                                        </div>
+                                        <div class="md-layout-item ">
+                                            <md-field>
+                                                <label for="title">Song Title</label>
+                                                <md-input class='title' placeholder="Karma Police" name="title" id="title" />
+                                            </md-field>
+                                        </div>
+                                    </div>
+                                </md-card-content>
+                                <md-card-content>
                                     <div class="md-layout-item">
                                         <md-field>
-                                            <label for="artist">Artist</label>
-                                            <md-input class='artist' placeholder="Radiohead" name="artist" />
+                                            <label for="url">Youtube Url</label>
+                                            <md-input name="url" placeholder="https://www.youtube.com/?hl=ru&gl=RU" class="url" />
                                         </md-field>
                                     </div>
-                                    <div class="md-layout-item ">
-                                        <md-field>
-                                            <label for="title">Song Title</label>
-                                            <md-input class='title' placeholder="Karma Police" name="title" id="title" />
-                                        </md-field>
-                                    </div>
-                                </div>
-                            </md-card-content>
-                            <md-card-content>
-                                <div class="md-layout-item">
-                                    <md-field>
-                                        <label for="url">Youtube Url</label>
-                                        <md-input name="url" placeholder="https://www.youtube.com/?hl=ru&gl=RU" class="url" />
-                                    </md-field>
-                                </div>
-                            </md-card-content>
-                            <md-card-actions>
-                                <md-button onclick="clickAddSong()" class="md-raised  md-accent">Share</md-button>
-                            </md-card-actions>
-                        </md-card>
-                    </form>
-                    <md-chip class='add-tooltip tooltip hide'></md-chip>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card-row">
-                        <md-card v-for="song in songs">
-                            <md-card-area>
-                                <md-card-header>
-                                    <div class="md-title">{{song.author}} — {{song.title}}</div>
-                                    <div class="md-subhead">Author: {{song.uploadedBy}}</div>
-                                </md-card-header>
-                                <md-card-media>
-                                    <iframe width="560" height="315" v-bind:src="song.watchUrl" frameborder="0" showinfo="0">
-                                    </iframe>
-                                </md-card-media>
-                            </md-card-area>
-                            <md-card-actions>
-                                <md-chip v-bind:id="song.id" class='rate-tooltip tooltip hide'></md-chip>
-                                <md-button v-bind:data-id="song.id" class="rateSong" onclick="clickRateSong(this.getAttribute('data-id'))">
-                                    <md-icon>favorite</md-icon> {{song.rank}}</md-button>
-                            </md-card-actions>
-                        </md-card>
+                                </md-card-content>
+                                <md-card-actions>
+                                    <md-button onclick="clickAddSong()" class="md-raised  md-accent">Share</md-button>
+                                </md-card-actions>
+                            </md-card>
+                        </form>
+                        <md-chip class='add-tooltip tooltip hide'></md-chip>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="./" class="logo">Nebula<span class="--color-accent">Sound</span></a>
-                </div>
-                <div class="col-md-6">
-                    <div class="footer-menu">
-                        <a href="https://incentive.nebulas.io/signup.html?invite=oD3n5" target="_blank">Nebulas Incentive</a>
-                        <a href="https://github.com/nebulasound/nebulasound.github.io" target="_blank">Docs</a>
-                        <a href="https://explorer.nebulas.io/#/address/n1h656qsWvxa7E9B3MQuWVjaL5MuAqXgi7A" target="_blank">Smart Contract</a>
-                        <a href="mailto:nebulassound@gmail.com" target="_blank">Contact us</a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-row">
+                            <md-card data-aos="zoom-in" v-for="song in songs">
+                                <md-card-area>
+                                    <md-card-header>
+                                        <div class="md-title">{{song.author}} — {{song.title}}</div>
+                                        <div class="md-subhead">Author: {{song.uploadedBy}}</div>
+                                    </md-card-header>
+                                    <md-card-media>
+                                        <iframe width="560" height="315" v-bind:src="song.watchUrl" frameborder="0" showinfo="0">
+                                        </iframe>
+                                    </md-card-media>
+                                </md-card-area>
+                                <md-card-actions>
+                                    <md-chip v-bind:id="song.id" class='rate-tooltip tooltip hide'></md-chip>
+                                    <md-button v-bind:data-id="song.id" class="rateSong" onclick="clickRateSong(this.getAttribute('data-id'))">
+                                        <md-icon>favorite</md-icon> {{song.rank}}</md-button>
+                                </md-card-actions>
+                            </md-card>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </section>
+        <section class="roadmap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" data-aos="fade-up">
+                        <div class="roadmap-title">Roadmap</div>
+                        <ul class="roadmap-lists">
+                            <li class="item-l" data-aos="fade-right">
+                                <p class="">Alpha V1.0
+                                    <b>2018.Q2</b>
+                                </p>
+                            </li>
+                            <li class="" data-aos="fade-left">
+                                <p class="">
+                                    <b>2018.Q2</b> Youtube API</p>
+                            </li>
+                            <li class="item-l" data-aos="fade-right">
+                                <p class="">Like system integration
+                                    <b>2018.Q2</b>
+                                </p>
+                            </li>
+                            <li class="item-hightlight" data-aos="fade-left">
+                                <p class=""> Item filters
+                                    <b>2018.Q2</b>
+                                </p>
+                            </li>
+                            <li class="item-l item-future" data-aos="fade-right">
+                                <p class="">
+                                    <b>2018.Q3</b> Personal account dashboard</p>
+                            </li>
+                            <li class="item-future" data-aos="fade-left">
+                                <p class="">
+                                    <b>2018.Q3</b> Soundcloud API</p>
+                            </li>
+                            <li class="item-l item-future" data-aos="fade-right">
+                                <p class=""> Mobile application
+                                    <b>2018.Q3</b>
+                                </p>
+                            </li>
+                            <li class="item-future" data-aos="fade-left">
+                                <p class="">
+                                    <b>2018.Q4</b> Beta V1.0</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="./" class="logo">Nebula<span class="--color-accent">Sound</span></a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-menu">
+                            <a href="https://incentive.nebulas.io/signup.html?invite=oD3n5" target="_blank">Nebulas Incentive</a>
+                            <a href="https://github.com/nebulasound/nebulasound.github.io" target="_blank">Docs</a>
+                            <a href="https://explorer.nebulas.io/#/address/n1h656qsWvxa7E9B3MQuWVjaL5MuAqXgi7A" target="_blank">Smart Contract</a>
+                            <a href="mailto:nebulassound@gmail.com" target="_blank">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
     <script src="js/common.js"></script>
 </body>
 
