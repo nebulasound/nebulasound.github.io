@@ -51,11 +51,11 @@ function rateSongTrue() {
 }
 
 function rateSongResp(resp) {
-    $(rateItem).removeClass('hide')
     if (
         resp.result === "Error: You have already liked this song." ||
         resp.result === "Error: Song with this ID doesn't exist."
     ) {
+        $(rateItem).removeClass('hide')
         $(rateItem).addClass('--fail')
         $(rateItem).text(resp.result);
     } else {
@@ -64,9 +64,15 @@ function rateSongResp(resp) {
 }
 
 function rateSongRespTrue(resp) {
-    $(rateItem).removeClass('hide')
-    $(rateItem).removeClass('--fail')
-    $(rateItem).text("You like it!");
+    if (resp != "Error: Transaction rejected by user") {
+        $(rateItem).removeClass('hide')
+        $(rateItem).removeClass('--fail')
+        $(rateItem).text("You like it!");
+    } else {
+        $(rateItem).removeClass('hide')
+        $(rateItem).addClass('--fail')
+        $(rateItem).text("You have rejected transaction.");
+    }
 }
 
 function clickAddSong() {
@@ -97,13 +103,12 @@ function addSongTrue() {
 }
 
 function addSongResp(resp) {
-    $('.add-tooltip').removeClass('hide')
     if (
         resp.result === "Error: This song is already exists." ||
         resp.result === "Error: Please enter all needed data." ||
         resp.result === "Enter valid youtube song url."
     ) {
-
+        $('.add-tooltip').removeClass('hide')
         $('.add-tooltip').addClass('--fail')
         $(".add-tooltip").text(resp.result);
     } else {
@@ -112,9 +117,15 @@ function addSongResp(resp) {
 }
 
 function addSongRespTrue(resp) {
-    $('.add-tooltip').removeClass('hide')
-    $('.add-tooltip').removeClass('--fail')
-    $(".add-tooltip").text("You have succefully shared the song.");
+    if (resp != "Error: Transaction rejected by user") {
+        $('.add-tooltip').removeClass('hide')
+        $('.add-tooltip').removeClass('--fail')
+        $(".add-tooltip").text("You have succefully shared the song.");
+    } else {
+        $('.add-tooltip').removeClass('hide')
+        $('.add-tooltip').addClass('--fail')
+        $('.add-tooltip').text("You have rejected transaction.");
+    }
 }
 
 Vue.use(VueMaterial.default)
